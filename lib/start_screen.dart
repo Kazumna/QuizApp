@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  final void Function() startQuiz;
+
+  const StartScreen(this.startQuiz, {super.key});
 
   @override
   Widget build(context) {
@@ -30,7 +32,7 @@ class StartScreen extends StatelessWidget {
             ),
             icon: const Icon(Icons.arrow_right_alt),
             //Step 3
-            onPressed: (){},
+            onPressed: startQuiz,
             label: const Text('Start Quiz'),
           )
         ],
