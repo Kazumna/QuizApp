@@ -11,9 +11,12 @@ class StartScreen extends StatelessWidget {
         ///Taking minimal vertical spaces as needed
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            'assets/images/quiz-logo.png',
-            width: 300,
+          Opacity(
+            opacity: 0.6,
+            child: Image.asset(
+              'assets/images/quiz-logo.png',
+              width: 300,
+            ),
           ),
           const SizedBox(height: 80),
           const Text(
