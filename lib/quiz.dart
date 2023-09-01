@@ -36,6 +36,7 @@ class _QuizState extends State<Quiz> {
           )),
           //Step 2
           child: activeScreen == 'start-screen'
+              //passing POINTER to switchScreen method
               ? StartScreen(switchScreen)
               : const QuestionsScreen(),
         ),
