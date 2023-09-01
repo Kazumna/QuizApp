@@ -23,7 +23,7 @@ class _QuizState extends State<Quiz> {
   @override
   Widget build(context) {
     Widget screenWidget =  StartScreen(switchScreen);
-    
+
     if (activeScreen == 'questions-screen') {
       screenWidget = const QuestionsScreen();
     }
