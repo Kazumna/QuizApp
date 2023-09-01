@@ -12,6 +12,9 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
 
+  //Storing a Widget into a variable
+  var activeScreen = const StartScreen();
+
   @override
   Widget build(context) {
     return MaterialApp(
@@ -28,7 +31,7 @@ class _QuizState extends State<Quiz> {
                 )
             ),
             //Step 2
-            child: const StartScreen(),
+            child: activeScreen,
           )
       ),
     );
