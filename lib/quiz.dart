@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -13,7 +14,14 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
 
   //Storing a Widget into a variable
-  var activeScreen = const StartScreen();
+  Widget activeScreen = const StartScreen();
+
+  ///Switching Screens by invoking this method 
+  void switchScreen() {
+    setState(() {
+      activeScreen = const QuestionsScreen();
+    });
+  }
 
   @override
   Widget build(context) {
