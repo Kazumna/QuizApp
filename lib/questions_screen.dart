@@ -33,7 +33,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             const SizedBox(height: 30),
 
             ///Three dots is called spread operator only available in Dart
-            ...currentQuestion.answers.map((answer) {
+            ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(answerText: answer, onTap: () {});
             }).toList(),
 

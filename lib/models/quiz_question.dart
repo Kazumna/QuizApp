@@ -10,4 +10,12 @@ class QuizQuestion {
   ///To assign value to these properties, need constructor function, which is below
   const QuizQuestion(this.text, this.answers);
 
+  //Shuffle affect to original list. Thus, this method create a new list and shuffle the list.
+  List<String> getShuffledAnswers() {
+    //copying an original list
+    final shuffledList = List.of(answers);
+    shuffledList.shuffle();
+    return shuffledList;
+  }
+
 }
