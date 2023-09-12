@@ -18,6 +18,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        ///Stretching items to fill the width 
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
            currentQuestion.text,
