@@ -10,9 +10,17 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -20,11 +28,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         margin: const EdgeInsets.symmetric(horizontal: 40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+
           ///Stretching items to fill the width
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-             currentQuestion.text,
+              currentQuestion.text,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
@@ -34,10 +43,13 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
             ///Three dots is called spread operator only available in Dart
             ...currentQuestion.getShuffledAnswers().map((answer) {
-              return AnswerButton(answerText: answer, onTap: () {});
+              return AnswerButton(
+                answerText: answer,
+                onTap: answerQuestion,
+              );
             }).toList(),
 
-         /*   AnswerButton(answerText: currentQuestion.answers[0], onTap: () {}),
+            /*   AnswerButton(answerText: currentQuestion.answers[0], onTap: () {}),
             AnswerButton(answerText: currentQuestion.answers[1], onTap: () {}),
             AnswerButton(answerText: currentQuestion.answers[2], onTap: () {}),
             AnswerButton(answerText: currentQuestion.answers[3], onTap: () {}),*/
