@@ -14,7 +14,9 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
 
   //final type mean, this variable will not be reassigned. but can add value to it.
-  final List<String> selectedAnswers = [];
+  // final List<String> selectedAnswers = [];
+
+  List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   ///Switching Screens by invoking this method
@@ -29,6 +31,7 @@ class _QuizState extends State<Quiz> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
+        selectedAnswers = [];
         activeScreen = 'start-screen';
       });
     }
