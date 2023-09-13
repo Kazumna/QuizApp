@@ -11,6 +11,9 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+
+  //final type mean, this variable will not be reassigned. but can add value to it.
+  final List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   ///Switching Screens by invoking this method
@@ -20,12 +23,16 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+  }
+
   @override
   Widget build(context) {
     Widget screenWidget =  StartScreen(switchScreen);
 
     if (activeScreen == 'questions-screen') {
-      screenWidget = const QuestionsScreen();
+      screenWidget =  QuestionsScreen(onSelectAnswer: chooseAnswer,);
     }
 
     return MaterialApp(
