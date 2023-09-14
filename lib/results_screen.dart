@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key});
+  //To use in build method, must add extra properties to this class
+  final List<String> chosenAnswers;
+
+  //if you wanna receive data in a widget, must accept argument in a constructor function
+  const ResultsScreen({
+    super.key,
+    required this.chosenAnswers,
+  });
+
 
   @override
   Widget build(BuildContext context) {
