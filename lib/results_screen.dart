@@ -36,6 +36,17 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //where method allow to filter the list on which its calling it
+    final summaryData = getSummaryData();
+    final numTotalQuestions = questions.length;
+
+    //creating new List but the purpose is getting number of correct Answer questions
+    final numCorrectQuestions = summaryData.where((data) {
+      //Not Transforming the value here
+      //Instead, return True if that data should be kept in that new filter list. if false, it drops
+      return data['user_answer'] == data['correct_answer'];
+    }).length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -43,7 +54,7 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You answered blah blah out of blah blah'),
+            Text('You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!'),
             const SizedBox(height: 30),
             QuestionsSummary(summaryData: getSummaryData()),
             const SizedBox(height: 30),
