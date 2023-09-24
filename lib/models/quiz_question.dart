@@ -11,7 +11,7 @@ class QuizQuestion {
   const QuizQuestion(this.text, this.answers);
 
   //Shuffle affect to original list. Thus, this method create a new list and shuffle the list.
-  List<String> getShuffledAnswers() {
+  List<String> get shuffledAnswers {
     //copying an original list
     final shuffledList = List.of(answers);
     shuffledList.shuffle();

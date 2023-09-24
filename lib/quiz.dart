@@ -17,7 +17,7 @@ class _QuizState extends State<Quiz> {
   //final type mean, this variable will not be reassigned. but can add value to it.
   // final List<String> selectedAnswers = [];
 
-  List<String> selectedAnswers = [];
+  final List<String> _selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   ///Switching Screens by invoking this method
@@ -28,9 +28,9 @@ class _QuizState extends State<Quiz> {
   }
 
   void chooseAnswer(String answer) {
-    selectedAnswers.add(answer);
+    _selectedAnswers.add(answer);
 
-    if (selectedAnswers.length == questions.length) {
+    if (_selectedAnswers.length == questions.length) {
       setState(() {
         // selectedAnswers = [];
         activeScreen = 'results-screen';
@@ -48,7 +48,7 @@ class _QuizState extends State<Quiz> {
     }
 
     if (activeScreen == 'results-screen') {
-      screenWidget = ResultsScreen(chosenAnswers: selectedAnswers,);
+      screenWidget = ResultsScreen(chosenAnswers: _selectedAnswers,);
     }
 
     return MaterialApp(

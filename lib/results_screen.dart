@@ -7,11 +7,13 @@ class ResultsScreen extends StatelessWidget {
   final List<String> chosenAnswers;
 
   //All values in dart are Object which are flexible type and accept all kinds of value.
-  List<Map<String, Object>> getSummaryData() {
+  //In Dart, we can use get keyword which is getter. it is one of the Dart Feature
+  //So we are using summaryData like a property using get keyword
+  List<Map<String, Object>> get summaryData {
     //the type should be the same
     final List<Map<String, Object>> summary = [];
 
-    for (var i = 0 ; i < chosenAnswers.length; i++) {
+    for (var i = 0; i < chosenAnswers.length; i++) {
       //wanna store a collection of pieces of data such as MAP, key value pairs
       summary.add({
         //can add any Key of your choice as long as its String type
@@ -33,19 +35,21 @@ class ResultsScreen extends StatelessWidget {
     required this.chosenAnswers,
   });
 
-
   @override
   Widget build(BuildContext context) {
     //where method allow to filter the list on which its calling it
-    final summaryData = getSummaryData();
+    // final summaryData = getSummaryData();
     final numTotalQuestions = questions.length;
 
     //creating new List but the purpose is getting number of correct Answer questions
-    final numCorrectQuestions = summaryData.where((data) {
-      //Not Transforming the value here
-      //Instead, return True if that data should be kept in that new filter list. if false, it drops
-      return data['user_answer'] == data['correct_answer'];
-    }).length;
+    //Not Transforming the value here
+    //Instead, return True if that data should be kept in that new filter list. if false, it drops
+    //Using Arrow Function
+    final numCorrectQuestions = summaryData
+        .where(
+          (data) => data['user_answer'] == data['correct_answer'],
+        )
+        .length;
 
     return SizedBox(
       width: double.infinity,
@@ -54,21 +58,18 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!'),
+            Text(
+                'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!'),
             const SizedBox(height: 30),
-            QuestionsSummary(summaryData: getSummaryData()),
+            QuestionsSummary(summaryData: summaryData),
             const SizedBox(height: 30),
             TextButton(
-              onPressed: (){},
+              onPressed: () {},
               child: Text('Restart Quiz!'),
             )
-
-
-
           ],
         ),
       ),
-
     );
   }
 }

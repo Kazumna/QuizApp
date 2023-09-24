@@ -50,7 +50,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
             ///Three dots is called spread operator only available in Dart
             // What mapping does here is One Answer Button Per Answer
-            ...currentQuestion.getShuffledAnswers().map((answer) {
+            ...currentQuestion.shuffledAnswers.map((answer) {
               return AnswerButton(
                 answerText: answer,
                 onTap: () => answerQuestion(answer),
