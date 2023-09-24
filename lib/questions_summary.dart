@@ -14,16 +14,18 @@ class QuestionsSummary extends StatelessWidget {
           children: [
             // as means type casting
             Text('${(data['question_index'] as int) + 1}'),
-            Column(
-              children: [
-                Text("${data['question']}"),
-                const SizedBox(height: 5),
-                Text("${data['user_answer']}"),
-                Text("${data['correct_answer']}"),
-                
+            Expanded(
+              child: Column(
+                children: [
+                  Text("${data['question']}"),
+                  const SizedBox(height: 5),
+                  Text("${data['user_answer']}"),
+                  Text("${data['correct_answer']}"),
 
 
-              ],
+
+                ],
+              ),
             ),
 
 

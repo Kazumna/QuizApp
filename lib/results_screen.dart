@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   //To use in build method, must add extra properties to this class
@@ -44,7 +45,7 @@ class ResultsScreen extends StatelessWidget {
           children: [
             Text('You answered blah blah out of blah blah'),
             const SizedBox(height: 30),
-            Text('You answered blah blah out of blah blah'),
+            QuestionsSummary(summaryData: getSummaryData()),
             const SizedBox(height: 30),
             TextButton(
               onPressed: (){},
