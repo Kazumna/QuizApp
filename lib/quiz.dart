@@ -13,11 +13,10 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-
   //final type mean, this variable will not be reassigned. but can add value to it.
   // final List<String> selectedAnswers = [];
 
-  final List<String> _selectedAnswers = [];
+  List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   ///Switching Screens by invoking this method
@@ -27,28 +26,40 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void chooseAnswer(String answer) {
-    _selectedAnswers.add(answer);
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'question-screen';
+    });
+  }
 
-    if (_selectedAnswers.length == questions.length) {
+
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+
+    if (selectedAnswers.length == questions.length) {
       setState(() {
         // selectedAnswers = [];
         activeScreen = 'results-screen';
       });
     }
-
   }
 
   @override
   Widget build(context) {
-    Widget screenWidget =  StartScreen(switchScreen);
+    Widget screenWidget = StartScreen(switchScreen);
 
     if (activeScreen == 'questions-screen') {
-      screenWidget =  QuestionsScreen(onSelectAnswer: chooseAnswer,);
+      screenWidget = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+      );
     }
 
     if (activeScreen == 'results-screen') {
-      screenWidget = ResultsScreen(chosenAnswers: _selectedAnswers,);
+      screenWidget = ResultsScreen(
+        chosenAnswers: selectedAnswers,
+        restartQuiz: restartQuiz,
+      );
     }
 
     return MaterialApp(

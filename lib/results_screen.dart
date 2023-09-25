@@ -5,6 +5,7 @@ import 'package:quiz_app/questions_summary.dart';
 class ResultsScreen extends StatelessWidget {
   //To use in build method, must add extra properties to this class
   final List<String> chosenAnswers;
+  final void Function() restartQuiz;
 
   //All values in dart are Object which are flexible type and accept all kinds of value.
   //In Dart, we can use get keyword which is getter. it is one of the Dart Feature
@@ -33,6 +34,7 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.chosenAnswers,
+    required this.restartQuiz,
   });
 
   @override
@@ -64,7 +66,7 @@ class ResultsScreen extends StatelessWidget {
             QuestionsSummary(summaryData: summaryData),
             const SizedBox(height: 30),
             TextButton(
-              onPressed: () {},
+              onPressed: restartQuiz,
               child: Text('Restart Quiz!'),
             )
           ],
