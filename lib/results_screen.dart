@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
-import 'package:quiz_app/questions_summary.dart';
+import 'package:quiz_app/questions_summary/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   //To use in build method, must add extra properties to this class
   final List<String> chosenAnswers;
-  final void Function() restartQuiz;
+  final void Function() onRestart;
 
   //All values in dart are Object which are flexible type and accept all kinds of value.
   //In Dart, we can use get keyword which is getter. it is one of the Dart Feature
@@ -34,7 +34,7 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.chosenAnswers,
-    required this.restartQuiz,
+    required this.onRestart,
   });
 
   @override
@@ -73,14 +73,24 @@ class ResultsScreen extends StatelessWidget {
             const SizedBox(height: 30),
             QuestionsSummary(summaryData: summaryData),
             const SizedBox(height: 30),
-            TextButton(
+            TextButton.icon(
+              onPressed: onRestart,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+              icon: const Icon(Icons.refresh_outlined),
+              label: const Text("Restart Quiz!"),
+            ),
+
+            ///Version 1
+            /*TextButton(
               onPressed: restartQuiz,
               child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.restart_alt,
+                    Icons.refresh_outlined,
                     color: Colors.white,
                     size: 20,
                   ),
@@ -91,7 +101,7 @@ class ResultsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            )*/
           ],
         ),
       ),

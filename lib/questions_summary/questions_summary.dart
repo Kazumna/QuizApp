@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/questions_summary/question_identifier.dart';
+import 'package:quiz_app/questions_summary/summary_item.dart';
 
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary({super.key, required this.summaryData});
@@ -7,6 +9,24 @@ class QuestionsSummary extends StatelessWidget {
   final List<Map<String, Object>> summaryData;
 
   @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 400,
+      child: SingleChildScrollView(
+        child: Column(
+          children: summaryData.map((data) {
+            return SummaryItem(itemData: data);
+          }).toList(),
+        ),
+      ),
+
+    );
+  }
+
+
+
+  ///Version 1
+ /* @override
   Widget build(BuildContext context) {
     TextStyle defaultStyle = const TextStyle(
       color: Colors.white,
@@ -35,13 +55,18 @@ class QuestionsSummary extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // as means type casting
-                Container(
+                *//*Container(
                   decoration: const BoxDecoration(
                     color: Colors.purpleAccent,
                     shape: BoxShape.circle,
                   ),
                   padding: const EdgeInsets.all(8.0),
                   child: Text('${(data['question_index'] as int) + 1}'),
+                ),*//*
+                QuestionIdentifier(
+                  questionIndex: (data['question_index'] as int) + 1,
+                  isCorrectAnswer:
+                      data['user_answer'] == data['correct_answer'],
                 ),
                 const SizedBox(width: 15),
                 Expanded(
@@ -71,5 +96,5 @@ class QuestionsSummary extends StatelessWidget {
         ),
       ),
     );
-  }
+  }*/
 }
